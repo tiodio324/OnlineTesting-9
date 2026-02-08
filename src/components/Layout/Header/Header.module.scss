@@ -1,0 +1,132 @@
+@use '@/styles/globalColors' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.header {
+  @include flex-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  padding: 0 $spacing-lg;
+  background: $gradient-header;
+  color: $color-text-inverse;
+  z-index: $z-fixed;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  @include mobile {
+    padding: 0 $spacing-md;
+  }
+}
+
+.left {
+  @include flex-start;
+  gap: $spacing-sm;
+}
+
+.menuButton {
+  display: none;
+  padding: $spacing-xs;
+  background: transparent;
+  border: none;
+  color: $color-text-inverse;
+  cursor: pointer;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  @include mobile-tablet {
+    display: flex;
+  }
+}
+
+.logo {
+  @include flex-start;
+  gap: $spacing-xs;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.logoIcon {
+  width: 24px;
+  height: 24px;
+  color: $color-accent;
+}
+
+.logoText {
+  font-family: $font-family-secondary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  
+  @include mobile {
+    display: none;
+  }
+}
+
+.center {
+  @include flex-start;
+  gap: $spacing-sm;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  @include mobile {
+    display: none;
+  }
+}
+
+.titlePrefix {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-family: $font-family-secondary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  margin: 0;
+}
+
+.right {
+  @include flex-start;
+  gap: $spacing-sm;
+}
+
+.userInfo {
+  @include flex-start;
+  gap: $spacing-sm;
+}
+
+.role {
+  font-size: $font-size-xs;
+  color: $color-text-inverse;
+  padding: $spacing-xs $spacing-sm;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-sm;
+  
+  @include mobile {
+    display: none;
+  }
+}
+
+.headerButton {
+  color: $color-accent !important;
+  border-color: $color-accent !important;
+  padding: $spacing-xs $spacing-md !important;
+  
+  &:hover {
+    background: rgba($color-accent, 0.1) !important;
+  }
+}

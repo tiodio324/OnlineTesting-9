@@ -1,0 +1,1 @@
+export interface TestResult { id: string; testId: string; userName: string; userEmail: string; score: number; maxScore: number; percentage: number; passed: boolean; answers: Record<string, string | string[]>; startedAt: string; completedAt: string; isActive: boolean; }

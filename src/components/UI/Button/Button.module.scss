@@ -1,0 +1,150 @@
+@use '@/styles/globalColors' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.button {
+  @include button-base;
+  position: relative;
+  overflow: hidden;
+  font-weight: $font-weight-semibold;
+  
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// Variants
+.primary {
+  background: $color-primary;
+  color: $color-text-inverse;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  
+  &:hover:not(:disabled) {
+    background: $color-primary-dark;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.secondary {
+  background: $color-bg-secondary;
+  color: $color-primary;
+  border: 1px solid $color-border-primary;
+  
+  &:hover:not(:disabled) {
+    background: $color-bg-tertiary;
+    border-color: $color-primary;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: $color-text-secondary;
+  
+  &:hover:not(:disabled) {
+    background: $color-bg-tertiary;
+    color: $color-text-primary;
+  }
+}
+
+.danger {
+  background: $color-error;
+  color: $color-text-inverse;
+  
+  &:hover:not(:disabled) {
+    background: darken($color-error, 10%);
+    box-shadow: $shadow-md;
+  }
+}
+
+.success {
+  background: $color-success;
+  color: $color-text-inverse;
+  
+  &:hover:not(:disabled) {
+    background: darken($color-success, 10%);
+    box-shadow: $shadow-md;
+  }
+}
+
+// Sizes
+.sm {
+  padding: 7px 14px;
+  font-size: $font-size-xs;
+  border-radius: $radius-sm;
+}
+
+.md {
+  padding: 9px 18px;
+  font-size: $font-size-sm;
+  border-radius: $radius-sm;
+}
+
+.lg {
+  padding: 11px 22px;
+  font-size: $font-size-base;
+  border-radius: $radius-md;
+}
+
+// States
+.fullWidth {
+  width: 100%;
+}
+
+.loading {
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.iconOnly {
+  padding: $spacing-sm;
+  
+  &.sm {
+    padding: $spacing-xs;
+  }
+  
+  &.lg {
+    padding: $spacing-md;
+  }
+}
+
+// Elements
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  
+  svg {
+    width: 1.25em;
+    height: 1.25em;
+  }
+}
+
+.text {
+  @include text-ellipsis;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

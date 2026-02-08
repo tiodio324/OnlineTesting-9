@@ -1,0 +1,58 @@
+@use '@/styles/globalColors' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+// Online-Testing: Компактные функциональные карточки
+.card {
+  display: flex;
+  flex-direction: column;
+  background: $color-bg-primary;
+  border-radius: $radius-sm;
+  border: 1px solid $color-border-primary;
+  overflow: hidden;
+  transition: all $transition-fast;
+}
+
+.default { background: $color-bg-primary; }
+.outlined { 
+  background: transparent;
+  border: 1px solid $color-border-primary;
+}
+.elevated { 
+  background: $color-bg-primary; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.padding-none .content { padding: 0; }
+.padding-sm .content { padding: $spacing-xs; }
+.padding-md .content { padding: $spacing-sm; }
+.padding-lg .content { padding: $spacing-md; }
+
+.hoverable {
+  cursor: pointer;
+  
+  &:hover {
+    border-color: $color-primary;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.header {
+  padding: $spacing-sm;
+  background: $color-bg-secondary;
+  border-bottom: 1px solid $color-border-primary;
+  font-size: $font-size-sm;
+  
+  &:empty { display: none; }
+}
+
+.content { flex: 1; }
+
+.footer {
+  padding: $spacing-sm;
+  background: $color-bg-tertiary;
+  border-top: 1px solid $color-border-primary;
+  font-size: $font-size-sm;
+  
+  &:empty { display: none; }
+}
